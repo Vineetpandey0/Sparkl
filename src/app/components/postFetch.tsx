@@ -6,8 +6,8 @@ import Link from "next/link"
 import { Loader } from "lucide-react"
 
 function PostFetch() {
-  const [posts, setPosts] = useState<any[]>([])
-  const [visiblePosts, setVisiblePosts] = useState<any[]>([])
+  const [posts, setPosts] = useState<unknown[]>([])
+  const [visiblePosts, setVisiblePosts] = useState<unknown[]>([])
   const [page, setPage] = useState(1)
   const [loading, setLoading] = useState(true)   // 🔹 add loading state
   const loaderRef = useRef<HTMLDivElement | null>(null)
@@ -22,7 +22,7 @@ function PostFetch() {
       const postData = response.data
       setPosts(postData)
       setVisiblePosts(postData.slice(0, CHUNK_SIZE))
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error(error.message)
     } finally {
       setLoading(false) // stop loading
@@ -76,80 +76,80 @@ function PostFetch() {
   }
 
   return (
-  <div className="w-full p-4 space-y-8">
-    {Array.from({ length: Math.ceil(visiblePosts.length / CHUNK_SIZE) }).map(
-      (_, chunkIndex) => {
-        const start = chunkIndex * CHUNK_SIZE
-        const end = start + CHUNK_SIZE
-        const chunkPosts = visiblePosts.slice(start, end)
+    <div className="w-full p-4 space-y-8">
+      {Array.from({ length: Math.ceil(visiblePosts.length / CHUNK_SIZE) }).map(
+        (_, chunkIndex) => {
+          const start = chunkIndex * CHUNK_SIZE
+          const end = start + CHUNK_SIZE
+          const chunkPosts = visiblePosts.slice(start, end)
 
-        return (
-          <div
-            key={chunkIndex}
-            className="columns-3 gap-6 w-full"
-          >
-            {chunkPosts.map((post: any, index: number) => (
-              <div
-                key={`${chunkIndex}-${index}`}
-                className="inline-block w-full rounded-xl overflow-hidden shadow-xl mb-6 break-inside-avoid"
-              >
-                {/* Header */}
-                <div className="flex items-center border-none gap-3 p-3">
-                  <img
-                    src={post.avatar || "/default-avatar.png"}
-                    alt="avatar"
-                    className="w-10 h-10 object-cover rounded-full"
-                  />
-                  <Link
-                    href={`/profile/${post.username}`}
-                    className="font-medium hover:underline"
-                  >
-                    {post.username}
-                  </Link>
-                </div>
-
-                {/* Post Image */}
-                <img
-                  src={post.postFile}
-                  alt={`post-${index}`}
-                  className="w-full h-auto"
-                />
-
-                {/* Caption */}
-                {post.caption && (
-                  <div className="p-3 pb-0 text-sm">
-                    <span className="font-semibold">@{post.username}</span>{" "}
-                    {post.caption}
+          return (
+            <div
+              key={chunkIndex}
+              className="columns-3 gap-6 w-full"
+            >
+              {chunkPosts.map((post: unknown, index: number) => (
+                <div
+                  key={`${chunkIndex}-${index}`}
+                  className="inline-block w-full rounded-xl overflow-hidden shadow-xl mb-6 break-inside-avoid"
+                >
+                  {/* Header */}
+                  <div className="flex items-center border-none gap-3 p-3">
+                    <img
+                      src={post.avatar || "/default-avatar.png"}
+                      alt="avatar"
+                      className="w-10 h-10 object-cover rounded-full"
+                    />
+                    <Link
+                      href={`/profile/${post.username}`}
+                      className="font-medium hover:underline"
+                    >
+                      {post.username}
+                    </Link>
                   </div>
-                )}
 
-                <p className="mt-2 pl-3 pb-2 text-[11px] uppercase tracking-wide text-muted-foreground">
-                  {post.createdAt
-                    ? formatDistanceToNow(parseISO(post.createdAt), {
+                  {/* Post Image */}
+                  <img
+                    src={post.postFile}
+                    alt={`post-${index}`}
+                    className="w-full h-auto"
+                  />
+
+                  {/* Caption */}
+                  {post.caption && (
+                    <div className="p-3 pb-0 text-sm">
+                      <span className="font-semibold">@{post.username}</span>{" "}
+                      {post.caption}
+                    </div>
+                  )}
+
+                  <p className="mt-2 pl-3 pb-2 text-[11px] uppercase tracking-wide text-muted-foreground">
+                    {post.createdAt
+                      ? formatDistanceToNow(parseISO(post.createdAt), {
                         addSuffix: true,
                       })
-                    : ""}
-                </p>
-              </div>
-            ))}
-          </div>
-        )
-      }
-    )}
-
-    {/* Loader div */}
-    <div
-      ref={loaderRef}
-      className="h-10 flex justify-center items-center text-gray-500"
-    >
-      {visiblePosts.length >= posts.length ? (
-        "No more posts"
-      ) : (
-        <Loader className="animate-spin w-6 h-6 text-gray-500" />
+                      : ""}
+                  </p>
+                </div>
+              ))}
+            </div>
+          )
+        }
       )}
+
+      {/* Loader div */}
+      <div
+        ref={loaderRef}
+        className="h-10 flex justify-center items-center text-gray-500"
+      >
+        {visiblePosts.length >= posts.length ? (
+          "No more posts"
+        ) : (
+          <Loader className="animate-spin w-6 h-6 text-gray-500" />
+        )}
+      </div>
     </div>
-  </div>
-)
+  )
 
 }
 

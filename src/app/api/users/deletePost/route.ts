@@ -15,7 +15,7 @@ export async function DELETE(request:NextRequest) {
             return NextResponse.json({ error: "Post not found" }, { status: 400 })
         }
         return NextResponse.json({data:response, success:true})
-    } catch (error:any) {
+    } catch (error:unknown) {
         return NextResponse.json({error:error.message}, {status:502})
     }
 }

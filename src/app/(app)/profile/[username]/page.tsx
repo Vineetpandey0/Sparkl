@@ -50,7 +50,7 @@ function Profile() {
             const response = await axios.post(`/api/users/profile/${username}`, { task: 'fetchPosts', username })
             const postData = response.data
             setPosts(postData)
-        } catch (error: any) {
+        } catch (error: unknown) {
             console.error(error.message)
         } finally {
             setLoadingPost(false)
@@ -67,7 +67,7 @@ function Profile() {
             const user_ = response.data.data
             setUser(user_)
 
-        } catch (error: any) {
+        } catch (error: unknown) {
             console.error(error.message)
             toast.error("Network error")
         } finally {
@@ -144,7 +144,7 @@ function Profile() {
                     <h1 className='text-3xl font-bold p-2 pl-4'>Posts</h1>
                     <div className="w-full p-4 max-h-full overflow-scroll no-scrollbar">
                         <div className="grid grid-cols-4 gap-0 relative ">
-                            {posts.map((post: any, index) => (
+                            {posts.map((post: unknown, index) => (
                                 <div key={index} className="relative border-2 dark:border-black border-white  w-full aspect-square shadow-3xl overflow-hidden flex items-center justify-center">
 
                                     <img

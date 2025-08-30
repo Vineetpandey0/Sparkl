@@ -38,7 +38,7 @@ export default function SignUpPage() {
             const response = await axios.post("/api/users/signup", user)
             toast.success("Check your email for verification link...", { duration: 5000 })
             router.push("/login")
-        } catch (error: any) {
+        } catch (error: unknown) {
             console.log("Signup failed", error.message)
             if (error.status === 400) {
                 toast.error("User already exists")

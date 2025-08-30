@@ -7,9 +7,9 @@ import axios from 'axios'
 import toast from 'react-hot-toast'
 import ThemeModeToggle from '@/app/components/ThemeModeToggle'
 import Link from 'next/link'
-import { Card, CardHeader,  CardContent } from '@/components/ui/card'
+import { Card, CardHeader, CardContent } from '@/components/ui/card'
 import { Progress } from '@/components/ui/progress'
-import { Heart,  HomeIcon } from "lucide-react"
+import { Heart, HomeIcon } from "lucide-react"
 import Footer from '@/app/components/footer'
 
 
@@ -65,7 +65,7 @@ function Upload() {
       if (inputRef.current) inputRef.current.value = ""
       setFile(null)
       setCaption("")
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error("Upload error:", error.message)
       toast.error("Error uploading file")
     } finally {
@@ -79,7 +79,7 @@ function Upload() {
       const response = await axios.get("/api/users/upload")
       const postData = response.data
       setPosts(postData)
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error(error.message)
     } finally {
       setLoadingPost(false)
@@ -165,7 +165,7 @@ function Upload() {
       <h1 className='text-3xl font-bold p-4'>My Posts</h1>
       <div className="w-full p-4">
         <div className="grid grid-cols-4 gap-0 relative ">
-          {posts.map((post: any, index) => (
+          {posts.map((post: unknown, index) => (
             <div key={index} className="relative border-2 border-white dark:border-black w-full h-[400px] shadow-3xl overflow-hidden flex items-center justify-center">
               <img
                 src={post.postFile}

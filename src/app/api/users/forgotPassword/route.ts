@@ -14,7 +14,7 @@ export async function POST(request: NextRequest) {
         console.log(response)
         return NextResponse.json({message: "Forgot password email sent successfully"}, {status: 200})
         
-    } catch (error: any) {
+    } catch (error: unknown) {
         return NextResponse.json({error: error.message}, {status: 500})
     }
 }

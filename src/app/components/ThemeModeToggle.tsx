@@ -7,7 +7,7 @@ import { Toggle } from "@/components/ui/toggle"
 import { useEffect, useState } from "react"
 
 function ThemeModeToggle() {
-  const { theme, setTheme, resolvedTheme } = useTheme()
+  const { setTheme, resolvedTheme } = useTheme()
   const [mounted, setMounted] = useState(false)
 
   useEffect(() => {

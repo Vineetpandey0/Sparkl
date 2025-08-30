@@ -5,9 +5,9 @@ export const getDataFromToken = (request: NextRequest) => {
     try {
         const token = request.cookies.get("token")?.value || ''
         if(!token) throw new Error("User not logged in, NO TOKEN FOUND")
-        const decodedToken:any = jwt.verify(token, process.env.TOKEN_SECRET)
+        const decodedToken:unknown = jwt.verify(token, process.env.TOKEN_SECRET)
         return decodedToken.id
-    } catch (error:any) {
+    } catch (error:unknown) {
         throw new Error(error.message)
     }
 }

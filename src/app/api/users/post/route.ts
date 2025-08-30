@@ -15,7 +15,7 @@ export async function POST(request: NextRequest) {
         const post = await PostFile.findById(postid)
         console.log(post)
         return NextResponse.json({message:"Post request succesfull", success:true, data:post})
-    } catch (error:any) {
+    } catch (error:unknown) {
         return NextResponse.json({error: error.message}, {status: 501})
     }
 }

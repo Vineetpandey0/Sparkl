@@ -31,7 +31,7 @@ function ResetPassword() {
       await axios.post('/api/users/verifyemail', { token, tokenType })
       setVerified(true)
       console.log("Verification successful")
-    } catch (error: any) {
+    } catch (error: unknown) {
       setLoading(false)
       setError(true)
       console.log("Verification failed", error.message)
@@ -54,7 +54,7 @@ function ResetPassword() {
         toast.error("Failed to reset password")
         console.log("Password reset failed")
       }
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error("Error resetting password:", error.message)
       toast.error("Failed to reset password....")
     } finally {

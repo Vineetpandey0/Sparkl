@@ -2,7 +2,7 @@ import nodemailer from 'nodemailer'
 import User from '@/models/user.models'
 import bcrypt from 'bcryptjs'
 
-export const sendEmail = async ({email, emailType, userId='Nothing'}: any) => {
+export const sendEmail = async ({email, emailType, userId='Nothing'}: unknown) => {
     try {
         let hashedToken = ''
         if(emailType === 'VERIFY') {
@@ -24,7 +24,7 @@ export const sendEmail = async ({email, emailType, userId='Nothing'}: any) => {
         }
         console.log("Hashed token:", hashedToken)
         // Looking to send emails in production? Check out our Email API/SMTP product!
-        var transport = nodemailer.createTransport({
+        let transport = nodemailer.createTransport({
             service: "gmail",
             auth: {
                 user: "vineetpandey0010@gmail.com", // your Gmail
@@ -48,7 +48,7 @@ export const sendEmail = async ({email, emailType, userId='Nothing'}: any) => {
         const mailresponse = await transport.sendMail(mailOptions)
         return mailresponse
 
-    } catch (error:any) {
+    } catch (error:unknown) {
         throw new Error(error.message)
     }  
 }

@@ -42,7 +42,7 @@ export default function Profile() {
             const response = await axios.get("/api/users/upload")
             const postData = response.data
             setPosts(postData)
-        } catch (error: any) {
+        } catch (error: unknown) {
             console.error(error.message)
         } finally {
             setLoadingPost(false)
@@ -55,7 +55,7 @@ export default function Profile() {
             router.push('/login')
             toast.success('Logout successfull')
             window.location.reload()
-        } catch (error: any) {
+        } catch (error: unknown) {
             console.log(error.message)
             toast.error('logout unsuccessfull')
         }
@@ -71,7 +71,7 @@ export default function Profile() {
             const user_ = response.data.data
             setUser(user_)
 
-        } catch (error: any) {
+        } catch (error: unknown) {
             console.error(error.message)
             logout()
         } finally {
@@ -93,7 +93,7 @@ export default function Profile() {
             setIsAvatarUpdated(true)
             toast.success("Profile Pic set successfully")
             setFile(null)
-        } catch (error: any) {
+        } catch (error: unknown) {
             console.error(error.message)
             toast.error("Error updating profile pic")
 
@@ -202,7 +202,7 @@ export default function Profile() {
                         {!loadingPost && posts.length === 0 && <p className="text-center text-lg">No posts to show.</p>}
 
                         <div className="grid grid-cols-4 gap-0 relative ">
-                            {posts.map((post: any, index) => (
+                            {posts.map((post: unknown, index) => (
                                 <div key={index} className="relative border-2 dark:border-black border-white  w-full aspect-square shadow-3xl overflow-hidden flex items-center justify-center">
 
                                     <img

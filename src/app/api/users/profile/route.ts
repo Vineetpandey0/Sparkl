@@ -10,7 +10,7 @@ export async function GET(request: NextRequest){
         const userID = await getDataFromToken(request)
         const user = await User.findOne({_id: userID}).select("-password")
         return NextResponse.json({message: "User found", data: user, success: true})
-    } catch (error:any) {
+    } catch (error:unknown) {
         return NextResponse.json({error: error.message, success: false}, {status: 400})
     }
 }

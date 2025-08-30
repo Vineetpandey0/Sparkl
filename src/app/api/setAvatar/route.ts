@@ -15,7 +15,7 @@ cloudinary.config({
 
 interface CloudinaryUploadResult {
   public_id: string
-  [key: string]: any
+  [key: string]: unknown
 }
 
 
@@ -52,7 +52,7 @@ export async function POST(request: NextRequest) {
         )
         return NextResponse.json({ imageUrl }, { status: 200 })
 
-    } catch (error:any) {
+    } catch (error:unknown) {
         return NextResponse.json({error: error.message}, {status: 418})
     }
 

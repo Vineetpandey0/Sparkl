@@ -16,7 +16,7 @@ cloudinary.config({
 
 interface CloudinaryUploadResult {
   public_id: string
-  [key: string]: any
+  [key: string]: unknown
 }
 
 
@@ -62,7 +62,7 @@ export async function POST(request: NextRequest) {
         console.log("User who published this:", user)
         return NextResponse.json({ publicId: result.public_id }, { status: 200 })
 
-    } catch (error:any) {
+    } catch (error:unknown) {
         return NextResponse.json({error: error.message}, {status: 418})
     }
 
@@ -81,7 +81,7 @@ export async function GET(request: NextRequest) {
       console.log(postList)
       
       return NextResponse.json(postList, {status: 200})
-  } catch (error:any) {
+  } catch (error:unknown) {
       return NextResponse.json({message: error.message}, {status: 500})
   }
 }

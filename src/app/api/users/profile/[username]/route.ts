@@ -14,7 +14,7 @@ export async function POST(request: NextRequest){
             const user = await User.findOne({username}).select("-password")
             console.log(user)
             return NextResponse.json({message: "User found", data: user, success: true})
-        } catch (error:any) {
+        } catch (error:unknown) {
             return NextResponse.json({error: error.message, success: false}, {status: 400})
         }
     } else {
@@ -22,7 +22,7 @@ export async function POST(request: NextRequest){
             const userID = await User.findOne({username}).select("_id")
             const postList = await PostFile.find({isPublished:true , owner:userID }).select('-__v').sort({createdAt: -1})
             return NextResponse.json(postList, {status: 200})
-        } catch (error:any) {
+        } catch (error:unknown) {
             return NextResponse.json({message: error.message}, {status: 500})
         }
         

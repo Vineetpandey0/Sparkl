@@ -43,7 +43,7 @@ export async function POST(request: NextRequest) {
         
         return NextResponse.json({message: "User created successfully", success: true, savedUser} )
 
-    } catch (error:any) {
+    } catch (error:unknown) {
         return NextResponse.json({error: error.message}, {status: 500})
     }
 }
