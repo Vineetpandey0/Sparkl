@@ -138,7 +138,7 @@ export default function Profile() {
                         <ThemeModeToggle />
                     </div>
                     <Link href={`/profile/${user?.username}`} className="size-12 flex items-center justify-center overflow-hidden rounded-full text-xl cursor-pointer ">
-                        {!loadingUserDetails && <img src={user?.avatar} className="object-fill h-full w-full hover:opacity-65" />}
+                        {!loadingUserDetails && <Image src={user?.avatar} className="object-fill h-full w-full hover:opacity-65" />}
                         {loadingUserDetails && <Loader className="animate-spin w-6 h-6 text-gray-500" />
                         }
                     </Link>
@@ -165,7 +165,7 @@ export default function Profile() {
                                 }
                                 {!isUploadingAvatar &&
                                     <div className="avatar-circle size-36 rounded-full overflow-hidden flex items-center justify-center group relative">
-                                        <img src={user?.avatar} className="object-cover h-full group-hover:opacity-40" />
+                                        <Image src={user?.avatar} className="object-cover h-full group-hover:opacity-40" />
                                         <Camera
                                             className="absolute hidden size-1/2 group-hover:block object-contain opacity-45 " />
                                         <Input
@@ -205,7 +205,7 @@ export default function Profile() {
                             {posts.map((post: unknown, index) => (
                                 <div key={index} className="relative border-2 dark:border-black border-white  w-full aspect-square shadow-3xl overflow-hidden flex items-center justify-center">
 
-                                    <img
+                                    <Image
                                         src={optimizeCloudinaryUrl(post.postFile)}
                                         alt={`post-${index}`}
                                         loading="lazy"

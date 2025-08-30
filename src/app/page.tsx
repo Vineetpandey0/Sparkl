@@ -1,6 +1,6 @@
 "use client"
 import React, { useState, useEffect } from "react"
-import {  UploadIcon } from "lucide-react"
+import { UploadIcon } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
 import ThemeModeToggle from "./components/ThemeModeToggle"
@@ -55,7 +55,7 @@ function Page() {
             </Button>
           ) : (
             <Link href="/profile" className="size-12 rounded-full text-xl overflow-hidden cursor-pointer">
-              <img src={currentUser?.avatar || "./images/profile_logo.png"} className="object-cover h-full w-full hover:opacity-65" />
+              <Image src={currentUser?.avatar || "./images/profile_logo.png"} className="object-cover h-full w-full hover:opacity-65" />
             </Link>
           )}
         </div>

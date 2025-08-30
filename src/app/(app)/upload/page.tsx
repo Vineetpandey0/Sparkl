@@ -112,7 +112,7 @@ function Upload() {
             <ThemeModeToggle />
           </div>
           <Link href="/profile" className="size-12 rounded-full text-xl cursor-pointer ">
-            <img src={currentUser.avatar} className="object-fill h-full w-full hover:opacity-65" />
+            <Image src={currentUser.avatar} className="object-fill h-full w-full hover:opacity-65" />
           </Link>
         </div>
       </div>
@@ -167,7 +167,7 @@ function Upload() {
         <div className="grid grid-cols-4 gap-0 relative ">
           {posts.map((post: unknown, index) => (
             <div key={index} className="relative border-2 border-white dark:border-black w-full h-[400px] shadow-3xl overflow-hidden flex items-center justify-center">
-              <img
+              <Image
                 src={post.postFile}
                 alt={`post-${index}`}
                 className="h-full object-cover hover:opacity-90  hover:scale-105 transition-transform duration-300"

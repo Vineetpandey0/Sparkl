@@ -83,7 +83,7 @@ function PostView({ postid, username, avatarUrl, isAdmin }: unknown) {
                         {/* Header */}
                         <div className="flex items-center justify-between px-4 py-3">
                             <div className="flex items-center gap-3">
-                                <img
+                                <Image
                                     src={avatarUrl}
                                     alt="avatar"
                                     className="h-8 w-8 rounded-full object-cover"
@@ -115,7 +115,7 @@ function PostView({ postid, username, avatarUrl, isAdmin }: unknown) {
 
                         {/* Image */}
                         <div className="w-full bg-black">
-                            <img
+                            <Image
                                 src={postUrl}
                                 alt="post"
                                 className="w-full h-auto max-h-[600px] object-contain"

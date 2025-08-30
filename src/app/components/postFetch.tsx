@@ -95,7 +95,7 @@ function PostFetch() {
                 >
                   {/* Header */}
                   <div className="flex items-center border-none gap-3 p-3">
-                    <img
+                    <Image
                       src={post.avatar || "/default-avatar.png"}
                       alt="avatar"
                       className="w-10 h-10 object-cover rounded-full"
@@ -109,7 +109,7 @@ function PostFetch() {
                   </div>
 
                   {/* Post Image */}
-                  <img
+                  <Image
                     src={post.postFile}
                     alt={`post-${index}`}
                     className="w-full h-auto"

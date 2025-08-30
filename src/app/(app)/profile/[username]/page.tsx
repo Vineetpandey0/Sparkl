@@ -103,7 +103,7 @@ function Profile() {
                         <ThemeModeToggle />
                     </div>
                     <Link href="/profile" className="size-12 rounded-full text-xl cursor-pointer ">
-                        <img src={currentUser.avatar} className="object-fill h-full w-full hover:opacity-65" />
+                        <Image src={currentUser.avatar} className="object-fill h-full w-full hover:opacity-65" />
                     </Link>
                 </div>
             </div>
@@ -121,7 +121,7 @@ function Profile() {
                         {!loadingUserDetails &&
                             <div className="flex p-2 w-full h-fit gap-6 shadow-xl">
                                 <div className="avatar-circle bg-red-400 size-36 rounded-full overflow-hidden">
-                                    <img src={user?.avatar} className="object-contain" />
+                                    <Image src={user?.avatar} className="object-contain" />
                                 </div>
                                 <div className="flex flex-col h-full  items-start pt-0 p-6 ">
                                     <h1 className="username text-3xl font-bold pb-2">@{user?.username}</h1>
@@ -147,7 +147,7 @@ function Profile() {
                             {posts.map((post: unknown, index) => (
                                 <div key={index} className="relative border-2 dark:border-black border-white  w-full aspect-square shadow-3xl overflow-hidden flex items-center justify-center">
 
-                                    <img
+                                    <Image
                                         src={optimizeCloudinaryUrl(post.postFile)}
                                         alt={`post-${index}`}
                                         loading="lazy"
