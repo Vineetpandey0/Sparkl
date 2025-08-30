@@ -1,6 +1,6 @@
 "use client"
 import React, { useEffect, useState } from "react"
-import { UploadIcon, HomeIcon } from "lucide-react"
+import { UploadIcon, HomeIcon, Loader } from "lucide-react"
 import ThemeModeToggle from "@/app/components/ThemeModeToggle"
 import Link from "next/link"
 import axios from "axios"
@@ -11,6 +11,7 @@ import { Skeleton } from "@/components/ui/skeleton"
 import PostView from "@/app/components/singlePost"
 import Footer from "@/app/components/footer"
 import { useParams } from "next/navigation"
+import Image from "next/image"
 
 interface UserProfile {
     _id?: string
@@ -102,9 +103,11 @@ function Profile() {
 
                         <ThemeModeToggle />
                     </div>
-                    <Link href="/profile" className="size-12 rounded-full text-xl cursor-pointer ">
-                        <Image src={currentUser.avatar} className="object-fill h-full w-full hover:opacity-65" />
-                    </Link>
+                    {!loadingUserDetails && 
+                    <Link href="/profile" className="relative size-12 rounded-full overflow-hidden text-xl cursor-pointer ">
+                        <Image alt="user logo" src={currentUser.avatar} className="object-fill hover:opacity-65" fill />
+                    </Link>}
+                    {loadingUserDetails && <Loader className="animate-spin w-6 h-6 text-gray-500" />}
                 </div>
             </div>
 
@@ -120,8 +123,8 @@ function Profile() {
 
                         {!loadingUserDetails &&
                             <div className="flex p-2 w-full h-fit gap-6 shadow-xl">
-                                <div className="avatar-circle bg-red-400 size-36 rounded-full overflow-hidden">
-                                    <Image src={user?.avatar} className="object-contain" />
+                                <div className="avatar-circle size-36 rounded-full relative overflow-hidden">
+                                    <Image alt="user profile pic" src={user?.avatar} className="object-cover" fill/>
                                 </div>
                                 <div className="flex flex-col h-full  items-start pt-0 p-6 ">
                                     <h1 className="username text-3xl font-bold pb-2">@{user?.username}</h1>
@@ -156,6 +159,7 @@ function Profile() {
                                             setPostClicked(true)
                                         }}
                                         className="h-full object-cover hover:opacity-80  hover:scale-105 transition-transform duration-300"
+                                        fill
                                     />
                                     <div className='text-white text-2xl absolute bottom-0 left-0 p-3 flex justify-center items-center gap-1'>
                                         <Heart className="w-6 h-6 fill-red-500 text-red-500" />

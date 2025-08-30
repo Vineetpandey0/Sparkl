@@ -18,6 +18,7 @@ import { Skeleton } from '@/components/ui/skeleton';
 
 import { formatDistanceToNow, parseISO } from 'date-fns'
 import toast from 'react-hot-toast';
+import Image from 'next/image';
 
 function PostView({ postid, username, avatarUrl, isAdmin }: unknown) {
     const [liked, setLiked] = useState(false);
@@ -82,13 +83,15 @@ function PostView({ postid, username, avatarUrl, isAdmin }: unknown) {
                     <div className="w-full max-w-[600px] rounded-md border-none border-border bg-background shadow-2xl ">
                         {/* Header */}
                         <div className="flex items-center justify-between px-4 py-3">
-                            <div className="flex items-center gap-3">
+                            <div className="flex relative size-10 items-center gap-3">
                                 <Image
                                     src={avatarUrl}
                                     alt="avatar"
-                                    className="h-8 w-8 rounded-full object-cover"
+                                    className="rounded-full object-cover"
+                                    fill
+                                    unoptimized
                                 />
-                                <span className="text-sm font-semibold">{username}</span>
+                                <span className="text-sm absolute left-12 font-semibold">{username}</span>
                             </div>
                             {isAdmin &&
                                 <AlertDialog >
@@ -113,13 +116,17 @@ function PostView({ postid, username, avatarUrl, isAdmin }: unknown) {
 
                         </div>
 
-                        {/* Image */}
-                        <div className="w-full bg-black">
+                        {/* image */}
+                        <div className="w-full relative bg-black">
                             <Image
                                 src={postUrl}
                                 alt="post"
-                                className="w-full h-auto max-h-[600px] object-contain"
-                            />
+                                width={0}       // let Next.js figure it out
+                                height={0}      // let Next.js figure it out
+                                sizes="100vw"   // makes it responsive
+                                className="h-auto w-auto"
+                                unoptimized     // if images are not from next/image domains
+                                />
                         </div>
 
                         {/* Actions */}

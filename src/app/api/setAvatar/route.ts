@@ -41,24 +41,24 @@ export async function POST(request: NextRequest) {
       )
       uploadStream.end(buffer)
     })
-    const imageUrl = result.secure_url;
+    const imgUrl = result.secure_url;
 
     // Get user ID from token
     const userID = await getDataFromToken(request)
     try {
 
         const user =  await User.findByIdAndUpdate(userID,
-            {avatar: imageUrl}
+            {avatar: imgUrl}
         )
-        return NextResponse.json({ imageUrl }, { status: 200 })
+        return NextResponse.json({ imgUrl }, { status: 200 })
 
     } catch (error:unknown) {
         return NextResponse.json({error: error.message}, {status: 418})
     }
 
   } catch (error) {
-    console.error('Upload image failed:', error)
-    return NextResponse.json({ error: 'Upload image failed' }, { status: 500 })
+    console.error('Upload img failed:', error)
+    return NextResponse.json({ error: 'Upload img failed' }, { status: 500 })
   }
 }
 

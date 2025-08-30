@@ -7,12 +7,13 @@ import ThemeModeToggle from "./components/ThemeModeToggle"
 import PostFetch from "./components/postFetch"
 import axios from "axios"
 import Footer from "./components/footer"
-import { Loader } from "lucide-react"   // 👈 loader icon
+import { Loader } from "lucide-react"   //  loader icon
+import Image from "next/image"
 
 function Page() {
   const [isLoggedIn, setIsLoggedIn] = useState(false)
   const [currentUser, setCurrentUser] = useState({})
-  const [loading, setLoading] = useState(true)   // 👈 loader for initial fetch
+  const [loading, setLoading] = useState(true)   //  loader for initial fetch
 
   const checkLoggedIn = async () => {
     try {
@@ -24,7 +25,7 @@ function Page() {
     } catch (err) {
       console.error("Error fetching profile", err)
     } finally {
-      setLoading(false)   // 👈 stop loader
+      setLoading(false)   //  stop loader
     }
   }
 
@@ -54,8 +55,8 @@ function Page() {
               <Link href="/login" className="w-full h-full">Join</Link>
             </Button>
           ) : (
-            <Link href="/profile" className="size-12 rounded-full text-xl overflow-hidden cursor-pointer">
-              <Image src={currentUser?.avatar || "./images/profile_logo.png"} className="object-cover h-full w-full hover:opacity-65" />
+            <Link href="/profile" className="size-12 rounded-full text-xl relative overflow-hidden cursor-pointer">
+              <Image alt="user avatar" src={currentUser?.avatar || "./images/profile_logo.png"} className="object-cover h-full w-full hover:opacity-65" fill/>
             </Link>
           )}
         </div>
@@ -63,7 +64,7 @@ function Page() {
 
       {/* Galleries */}
       <div className="flex-1 no-scrollbar">
-        <PostFetch />   {/* 👈 posts should have their own loader inside PostFetch */}
+        <PostFetch />   {/*  posts should have their own loader inside PostFetch */}
       </div>
 
       <Footer />

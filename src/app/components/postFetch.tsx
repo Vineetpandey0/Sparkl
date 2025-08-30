@@ -4,6 +4,7 @@ import axios from "axios"
 import { formatDistanceToNow, parseISO } from "date-fns"
 import Link from "next/link"
 import { Loader } from "lucide-react"
+import Image from "next/image"
 
 function PostFetch() {
   const [posts, setPosts] = useState<unknown[]>([])
@@ -94,12 +95,15 @@ function PostFetch() {
                   className="inline-block w-full rounded-xl overflow-hidden shadow-xl mb-6 break-inside-avoid"
                 >
                   {/* Header */}
-                  <div className="flex items-center border-none gap-3 p-3">
-                    <Image
-                      src={post.avatar || "/default-avatar.png"}
+                  <div className="relative flex items-center border-none gap-3 p-3">
+                    <div className="relative rounded-full size-10 overflow-hidden  ">
+                      <Image
+                      src={post.avatar || "/images/profile_logo.png"}
                       alt="avatar"
-                      className="w-10 h-10 object-cover rounded-full"
-                    />
+                      className=" object-cover "
+                      fill
+                      unoptimized
+                    /></div>
                     <Link
                       href={`/profile/${post.username}`}
                       className="font-medium hover:underline"
@@ -108,12 +112,18 @@ function PostFetch() {
                     </Link>
                   </div>
 
-                  {/* Post Image */}
+                  {/* Post image */}
+                  <div className="relative">
                   <Image
                     src={post.postFile}
                     alt={`post-${index}`}
-                    className="w-full h-auto"
+                    width={0}       // let Next.js figure it out
+                    height={0}      // let Next.js figure it out
+                    sizes="100vw"   // makes it responsive
+                    className="h-auto w-auto"
+                    unoptimized     // if images are not from next/image domains
                   />
+                  </div>
 
                   {/* Caption */}
                   {post.caption && (

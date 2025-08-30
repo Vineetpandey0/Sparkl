@@ -42,14 +42,14 @@ export async function POST(request: NextRequest) {
       )
       uploadStream.end(buffer)
     })
-    const imageUrl = result.secure_url;
+    const imgUrl = result.secure_url;
 
     // Get user ID from token
     const userID = await getDataFromToken(request)
     try {
 
         const newPostFile = new PostFile({
-            postFile: imageUrl.toString(),
+            postFile: imgUrl.toString(),
             owner: userID,
             caption: formData.get('caption')?.toString(),
 
@@ -67,8 +67,8 @@ export async function POST(request: NextRequest) {
     }
 
   } catch (error) {
-    console.error('Upload image failed:', error)
-    return NextResponse.json({ error: 'Upload image failed' }, { status: 500 })
+    console.error('Upload img failed:', error)
+    return NextResponse.json({ error: 'Upload img failed' }, { status: 500 })
   }
 }
 

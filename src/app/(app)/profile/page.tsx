@@ -12,6 +12,7 @@ import { Skeleton } from "@/components/ui/skeleton"
 import PostView from "@/app/components/singlePost"
 import Footer from "@/app/components/footer"
 import { Input } from "@/components/ui/input"
+import Image from "next/image"
 
 interface UserProfile {
     _id?: string
@@ -137,8 +138,12 @@ export default function Profile() {
 
                         <ThemeModeToggle />
                     </div>
-                    <Link href={`/profile/${user?.username}`} className="size-12 flex items-center justify-center overflow-hidden rounded-full text-xl cursor-pointer ">
-                        {!loadingUserDetails && <Image src={user?.avatar} className="object-fill h-full w-full hover:opacity-65" />}
+                    <Link href={`/profile/${user?.username}`} className="relative size-12 flex items-center justify-center overflow-hidden rounded-full text-xl cursor-pointer ">
+                        {!loadingUserDetails && 
+                            <Image alt="avatarlogo" 
+                                src={user?.avatar} 
+                                className="object-fill  hover:opacity-65" 
+                                fill/>}
                         {loadingUserDetails && <Loader className="animate-spin w-6 h-6 text-gray-500" />
                         }
                     </Link>
@@ -165,12 +170,14 @@ export default function Profile() {
                                 }
                                 {!isUploadingAvatar &&
                                     <div className="avatar-circle size-36 rounded-full overflow-hidden flex items-center justify-center group relative">
-                                        <Image src={user?.avatar} className="object-cover h-full group-hover:opacity-40" />
+                                        <Image 
+                                            alt="User Profile pic"
+                                            src={user?.avatar} className="object-cover group-hover:opacity-40" fill/>
                                         <Camera
                                             className="absolute hidden size-1/2 group-hover:block object-contain opacity-45 " />
                                         <Input
                                             type="file"
-                                            accept="image/*"
+                                            accept="img/*"
                                             onChange={(e) => setFile(e.target?.files?.[0] || null)}
                                             className="file:text-transparent text-transparent rounded-full h-full w-full  hidden cursor-pointer group-hover:block absolute"
                                         />
@@ -214,6 +221,7 @@ export default function Profile() {
                                             setPostClicked(true)
                                         }}
                                         className="h-full object-cover hover:opacity-80  hover:scale-105 transition-transform duration-300"
+                                        fill
                                     />
                                     <div className='text-white text-2xl absolute bottom-0 left-0 p-3 flex justify-center items-center gap-1'>
                                         <Heart className="w-6 h-6 fill-red-500 text-red-500" />

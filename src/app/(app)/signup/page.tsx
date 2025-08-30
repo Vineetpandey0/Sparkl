@@ -18,6 +18,7 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import Footer from "@/app/components/footer"
 import ThemeModeToggle from "@/app/components/ThemeModeToggle"
+import Image from "next/image"
 
 
 export default function SignUpPage() {
@@ -66,14 +67,15 @@ export default function SignUpPage() {
             <div className='flex w-3/4 m-10 gap-8 h-full justify-evenly items-center object-contain'>
 
 
-                <div className="card_Image group relative w-2/7 ">
+                <div className="card_image group relative w-2/7 ">
 
                     {/* Back card 1 */}
                     <div className="absolute inset-0 rounded-3xl overflow-hidden transform rotate-6 translate-x-3 translate-y-3 transition duration-500 group-hover:rotate-2 group-hover:translate-x-1 group-hover:translate-y-1">
-                        <Image
+                    <Image
                             src="/images/sideImage.jpg"
                             alt="Background 1"
                             className="w-full h-full object-cover grayscale opacity-60"
+                            fill
                         />
                     </div>
 
@@ -83,15 +85,17 @@ export default function SignUpPage() {
                             src="/images/sideImage.jpg"
                             alt="Background 2"
                             className="w-full h-full object-cover grayscale opacity-40"
+                            fill
                         />
                     </div>
 
                     {/* Main card */}
-                    <div className="relative w-full h-full rounded-3xl overflow-hidden shadow-lg transform -rotate-6 transition duration-500 group-hover:rotate-0 group-hover:-translate-y-2 group-hover:shadow-2xl">
+                    <div className="relative w-full h-[400px] rounded-3xl overflow-hidden shadow-lg transform -rotate-6 transition duration-500 group-hover:rotate-0 group-hover:-translate-y-2 group-hover:shadow-2xl">
                         <Image
                             src="/images/sideImage.jpg"
-                            alt="Main Image"
+                            alt="Main image"
                             className="w-full h-full object-cover transition duration-500 hover:sepia"
+                            fill
                         />
                     </div>
                 </div>

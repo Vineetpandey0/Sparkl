@@ -11,6 +11,7 @@ import { Card, CardHeader, CardContent } from '@/components/ui/card'
 import { Progress } from '@/components/ui/progress'
 import { Heart, HomeIcon } from "lucide-react"
 import Footer from '@/app/components/footer'
+import Image from 'next/image'
 
 
 
@@ -111,8 +112,11 @@ function Upload() {
 
             <ThemeModeToggle />
           </div>
-          <Link href="/profile" className="size-12 rounded-full text-xl cursor-pointer ">
-            <Image src={currentUser.avatar} className="object-fill h-full w-full hover:opacity-65" />
+          <Link href="/profile" className="size-12 relative rounded-full overflow-hidden text-xl cursor-pointer ">
+            <Image alt='avatar' src={currentUser.avatar} 
+            className="object-fill hover:opacity-65" 
+            fill
+            />
           </Link>
         </div>
       </div>
@@ -121,14 +125,14 @@ function Upload() {
       <div className='w-full p-4 flex items-center justify-center'>
         <Card className='w-1/2 border-none shadow-none flex flex-col items-center'>
           <CardHeader className='p-0 w-full text-center'>
-            <h1 className='text-3xl font-bold'>Upload Images</h1>
+            <h1 className='text-3xl font-bold'>Post Something!</h1>
           </CardHeader>
 
           <CardContent className='w-full flex flex-col items-center gap-4'>
             <Input
               ref={inputRef}
               type='file'
-              accept="image/*"
+              accept="img/*"
               onChange={(e) => setFile(e.target?.files?.[0] || null)}
               className='border-2 h-10 cursor-pointer w-full'
             />
@@ -170,7 +174,8 @@ function Upload() {
               <Image
                 src={post.postFile}
                 alt={`post-${index}`}
-                className="h-full object-cover hover:opacity-90  hover:scale-105 transition-transform duration-300"
+                className="h-full object-cover hover:opacity-90  hover:scale-105 transition-transform duration-300" 
+                fill
               />
               <div className='text-white text-2xl absolute bottom-0 left-0 p-3 flex justify-center items-center gap-1'>
                 <Heart className="w-6 h-6 fill-red-500 text-red-500" />
