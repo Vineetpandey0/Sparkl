@@ -154,25 +154,25 @@ export default function Profile() {
 
             <div className=" flex p-6 w-full gap-6">
                 {
-                    <div className={`profile-card post-card flex flex-col gap-6 ${postClicked ? "w-2/3" : "w-1/3"} `}>
+                    <div className={`profile-card post-card flex flex-col gap-6 ${postClicked ? "w-2/3" : "w-3/6"} `}>
                         {postClicked &&
                             <PostView postid={postid} username={user!.username} avatarUrl={user?.avatar} isAdmin={true} />}
 
                         <h1 className="text-3xl pl-6 font-bold">My Profile</h1>
 
                         {!loadingUserDetails &&
-                            <div className="flex p-2 w-full h-fit gap-6 shadow-xl">
+                            <div className="flex p-2 w-full gap-6 shadow-xl">
                                 {isUploadingAvatar &&
-                                    <div className="avatar-circle size-36 rounded-full overflow-hidden flex items-center justify-center group relative">
+                                    <div className="avatar-circle size-36 rounded-full overflow-hidden flex items-center justify-center group relative ">
                                         <Loader className="animate-spin w-6 h-6 text-gray-500" />
                                     </div>
 
                                 }
                                 {!isUploadingAvatar &&
-                                    <div className="avatar-circle size-36 rounded-full overflow-hidden flex items-center justify-center group relative">
+                                    <div className="avatar-circle border-red-500 border-2 size-36 rounded-full overflow-hidden flex items-center justify-center group relative">
                                         <Image 
                                             alt="User Profile pic"
-                                            src={user?.avatar} className="object-cover rounded-full group-hover:opacity-40" fill/>
+                                            src={user?.avatar} className="object-cover group-hover:opacity-40" fill/>
                                         <Camera
                                             className="absolute hidden size-1/2 group-hover:block object-contain opacity-45 " />
                                         <Input
