@@ -164,10 +164,10 @@ export default function LoginPage() {
                         </Link>
                     </div>
                     <div className="flex gap-6 justify-center ">
-                        <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer">
+                        <a href="https://github.com/Vineetpandey0/Sparkl" target="_blank" rel="noopener noreferrer">
                             <Github className="w-5 h-5 hover:opacity-60" />
                         </a>
-                        <a href="https://linkedin.com/in/yourusername" target="_blank" rel="noopener noreferrer">
+                        <a href="https://www.linkedin.com/in/vineet-pandey-442715250/" target="_blank" rel="noopener noreferrer">
                             <Linkedin className="w-5 h-5 hover:opacity-60" />
                         </a>
                         <a href="https://instagram.com/vineetpandey00" target="_blank" rel="noopener noreferrer">

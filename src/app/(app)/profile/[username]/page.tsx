@@ -91,7 +91,7 @@ function Profile() {
         <div className="flex flex-col min-h-screen w-full ">
             {/* Navbar */}
             <div className="flex items-center justify-between px-6 py-4 pb-6">
-                <Link href='/' className="text-5xl w-1/2 flex items-start font-bold --font-edu">Sparkl</Link>
+                <div className="text-5xl  w-1/2 flex items-start font-bold --font-edu"><Link href='/'>Sparkl</Link></div>
                 <div className="w-1/2 flex items-center justify-end gap-6">
                     <div className="flex gap-6 justify-center items-center">
                         <Link href='/' title="Home">

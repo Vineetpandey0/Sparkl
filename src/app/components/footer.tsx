@@ -41,13 +41,13 @@ export default function Footer() {
             Join with the Creator
           </h3>
           <div className="flex space-x-5">
-            <Link href="https://github.com/" target="_blank" rel="noopener noreferrer" className="w-8 h-8 hover:text-gray-400">
+            <Link href="https://github.com/Vineetpandey0/Sparkl" target="_blank" rel="noopener noreferrer" className="w-8 h-8 hover:text-gray-400">
               <Github className="h-6 w-6" />
             </Link>
-            <Link href="https://linkedin.com/" target="_blank" rel="noopener noreferrer" className="w-8 h-8 hover:text-gray-400">
+            <Link href="https://www.linkedin.com/in/vineet-pandey-442715250/" target="_blank" rel="noopener noreferrer" className="w-8 h-8 hover:text-gray-400">
               <Linkedin className="h-6 w-6" />
             </Link>
-            <Link href="https://instagram.com/" target="_blank" rel="noopener noreferrer" className="w-8 h-8 hover:text-gray-400">
+            <Link href="https://instagram.com/vineetpandey00" target="_blank" rel="noopener noreferrer" className="w-8 h-8 hover:text-gray-400">
               <Instagram className="h-6 w-6" />
             </Link>
           </div>
