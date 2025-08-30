@@ -11,7 +11,7 @@ import { Loader } from "lucide-react"   // 👈 loader icon
 
 function Page() {
   const [isLoggedIn, setIsLoggedIn] = useState(false)
-  const [currentUser, setCurrentUser] = useState<any>(null)
+  const [currentUser, setCurrentUser] = useState({})
   const [loading, setLoading] = useState(true)   // 👈 loader for initial fetch
 
   const checkLoggedIn = async () => {

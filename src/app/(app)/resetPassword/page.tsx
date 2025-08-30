@@ -18,7 +18,7 @@ import {
 import { Label } from "@/components/ui/label"
 import { useRouter } from 'next/navigation'
 
-function resetPassword() {
+function ResetPassword() {
   const router = useRouter()
   const [token, setToken] = useState("")
   const [verified, setVerified] = useState(false)
@@ -161,4 +161,4 @@ function resetPassword() {
   )
 }
 
-export default resetPassword
+export default ResetPassword

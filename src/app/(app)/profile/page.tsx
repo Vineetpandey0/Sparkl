@@ -24,7 +24,7 @@ interface UserProfile {
 }
 
 
-function profile() {
+export default function Profile() {
     const [postClicked, setPostClicked] = useState(false)
     const [posts, setPosts] = useState([])
     const [user, setUser] = useState<UserProfile | null>(null)
@@ -233,5 +233,3 @@ function profile() {
         </div>
     )
 }
-
-export default profile

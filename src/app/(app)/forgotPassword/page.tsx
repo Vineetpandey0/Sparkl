@@ -18,7 +18,7 @@ import Link from 'next/link'
 import { Github, Instagram, Linkedin } from 'lucide-react'
 
 
-function forgotPassword() {
+function ForgotPassword() {
     const [email, setEmail] = useState('')
     const [buttonDisabled, setButtonDisabled] = useState(true)
     const [loading, setLoading] = useState(false)
@@ -34,7 +34,7 @@ function forgotPassword() {
     const sendVerificationMail = async () => {
         try {
             setLoading(true)
-            const response = await axios.post('/api/users/forgotPassword', { email })
+            const response = await axios.post('/api/users/ForgotPassword', { email })
             setLoading(false)
             toast.success("Check your email for the reset link")
         } catch (error) {
@@ -133,4 +133,4 @@ function forgotPassword() {
     )
 }
 
-export default forgotPassword
+export default ForgotPassword
