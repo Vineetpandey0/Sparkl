@@ -6,7 +6,13 @@ export async function GET() {
             message: "Logout successful",
             success: true
         })
-        response.cookies.set("token", "", { httpOnly: true, expires: new Date(0)})
+        response.cookies.set("token", "", {
+            httpOnly: true,
+            secure: process.env.NODE_ENV === "production",
+            sameSite: "lax",
+            path: "/",
+            expires: new Date(0) // expire immediately
+        })
         return response
     } catch (error: unknown) {
         return NextResponse.json({error: error.message}, {status: 500})
