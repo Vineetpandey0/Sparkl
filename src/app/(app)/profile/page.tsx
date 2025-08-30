@@ -172,7 +172,7 @@ export default function Profile() {
                                     <div className="avatar-circle size-36 rounded-full overflow-hidden flex items-center justify-center group relative">
                                         <Image 
                                             alt="User Profile pic"
-                                            src={user?.avatar} className="object-cover group-hover:opacity-40" fill/>
+                                            src={user?.avatar} className="object-cover rounded-full group-hover:opacity-40" fill/>
                                         <Camera
                                             className="absolute hidden size-1/2 group-hover:block object-contain opacity-45 " />
                                         <Input
