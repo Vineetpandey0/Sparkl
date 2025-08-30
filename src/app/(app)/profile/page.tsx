@@ -54,7 +54,7 @@ export default function Profile() {
             const response = axios.get('/api/users/logout')
             router.push('/login')
             toast.success('Logout successfull')
-            window.location.reload(true)
+            window.location.reload()
         } catch (error: any) {
             console.log(error.message)
             toast.error('logout unsuccessfull')

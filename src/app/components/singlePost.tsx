@@ -1,8 +1,8 @@
 "use client"
 import React, { useEffect, useState } from 'react'
-import { useParams, useRouter } from "next/navigation";
+import {  useRouter } from "next/navigation";
 import axios from 'axios';
-import { Smile, Heart, MoreHorizontal, MessageCircle, Send, Bookmark } from 'lucide-react';
+import {  Heart } from 'lucide-react';
 import {
   AlertDialog,
   AlertDialogAction,
@@ -17,7 +17,6 @@ import {
 import { Skeleton } from '@/components/ui/skeleton';
 
 import {formatDistanceToNow, parseISO} from 'date-fns'
-import { Button } from '@/components/ui/button';
 import toast from 'react-hot-toast';
 
 function PostView({postid, username, avatarUrl, isAdmin}:any) {

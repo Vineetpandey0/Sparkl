@@ -5,12 +5,11 @@ import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
 import axios from 'axios'
 import toast from 'react-hot-toast'
-import { Github, Instagram, Linkedin } from "lucide-react"
 import ThemeModeToggle from '@/app/components/ThemeModeToggle'
 import Link from 'next/link'
-import { Card, CardHeader, CardFooter, CardContent } from '@/components/ui/card'
+import { Card, CardHeader,  CardContent } from '@/components/ui/card'
 import { Progress } from '@/components/ui/progress'
-import { Heart, HeartOff, UploadIcon, HomeIcon } from "lucide-react"
+import { Heart,  HomeIcon } from "lucide-react"
 import Footer from '@/app/components/footer'
 
 

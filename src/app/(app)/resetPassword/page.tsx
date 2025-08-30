@@ -8,14 +8,10 @@ import { Github, Instagram, Linkedin } from 'lucide-react'
 
 import {
   Card,
-  CardAction,
   CardContent,
-  CardDescription,
   CardFooter,
   CardHeader,
-  CardTitle,
 } from "@/components/ui/card"
-import { Label } from "@/components/ui/label"
 import { useRouter } from 'next/navigation'
 
 function ResetPassword() {

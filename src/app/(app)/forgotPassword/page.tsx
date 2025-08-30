@@ -6,12 +6,9 @@ import toast from 'react-hot-toast'
 import axios from 'axios'
 import {
     Card,
-    CardAction,
     CardContent,
-    CardDescription,
     CardFooter,
     CardHeader,
-    CardTitle,
 } from "@/components/ui/card"
 import { Label } from '@/components/ui/label'
 import Link from 'next/link'

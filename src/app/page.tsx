@@ -1,6 +1,6 @@
 "use client"
 import React, { useState, useEffect } from "react"
-import { Github, Instagram, Linkedin, UploadIcon } from "lucide-react"
+import {  UploadIcon } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
 import ThemeModeToggle from "./components/ThemeModeToggle"

@@ -4,7 +4,6 @@ import { connect } from '@/dbConfig/dbConfig'
 import { getDataFromToken } from '@/helpers/getDataFromToken'
 import User from '@/models/user.models'
 import PostFile from '@/models/post.models'
-import mongoose from 'mongoose'
 
 connect()
 
