@@ -1,36 +1,104 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Sparkl
 
-## Getting Started
+🚀 **Live Website:** [Visit Sparkl](https://sparkl-share.vercel.app/)
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## Overview
+
+Sparkl is a modern web application that allows users to create an account, log in, and share posts. The platform is built with Next.js, TypeScript, Tailwind CSS, and MongoDB, with JWT-based authentication for secure login and session management.
+
+---
+
+## Features
+
+* 🔐 **User Authentication** – Sign up, log in, and logout securely with JWT cookies.
+* 👤 **Profile Management** – Upload and update profile avatars.
+* 🖼️ **Post Sharing** – Upload and display posts with images.
+* 📱 **Responsive Design** – Fully responsive UI built with Tailwind CSS.
+* ⚡ **Optimized Images** – Using Next.js Image component with Cloudinary.
+* 🌐 **Environment Configurations** – Configured with `.env` for secure deployments.
+
+---
+
+## Future Scope
+
+* 👍 **Like System** – Allow users to like posts.
+* 💬 **Comments** – Enable users to comment on posts.
+* 🏘️ **Communities** – Create and join interest-based groups.
+* 🔔 **Notifications** – Real-time updates for likes, comments, and follows.
+* 🌍 **Social Integration** – Share posts to external platforms.
+
+---
+
+## Project Structure
+
+```
+Sparkl/
+│
+├── public/                  # Static assets (images, icons, etc.)
+│   └── images/              # Default profile/logo images
+│
+├── src/
+│   ├── app/                 # Next.js app router
+│   │   ├── api/             # API routes
+│   │   │   ├── auth/        # Authentication (login, logout, signup)
+│   │   │   └── users/       # User-related endpoints
+│   │   ├── components/      # Reusable UI components
+│   │   ├── profile/         # User profile pages
+│   │   └── page.tsx         # Main entry point
+│   │
+│   ├── dbConfig/            # MongoDB connection setup
+│   ├── models/              # Mongoose schemas (User, Post, etc.)
+│   └── utils/               # Utility functions (JWT, middleware, etc.)
+│
+├── .env                     # Environment variables
+├── next.config.js           # Next.js configuration
+├── tailwind.config.ts       # Tailwind CSS configuration
+├── tsconfig.json            # TypeScript configuration
+└── package.json             # Dependencies and scripts
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Tech Stack
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+* **Frontend:** Next.js, React, TypeScript, Tailwind CSS
+* **Backend:** Next.js API Routes, Node.js
+* **Database:** MongoDB with Mongoose
+* **Authentication:** JWT (JSON Web Tokens), nodemailer(for verifying account)
+* **Hosting:** Vercel
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+## Installation & Setup
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+# Clone the repository
+git clone https://github.com/Vineetpandey0/Sparkl.git
+cd Sparkl
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+# Install dependencies
+npm install
 
-## Deploy on Vercel
+# Setup environment variables
+cp .env.example .env
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+# Run the development server
+npm run dev
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+
+## Contributing
+
+Contributions are welcome! Feel free to fork the repo and submit a pull request.
+
+---
+
+## License
+
+This project is licensed under the **MIT License**.
+
+
+✨ Built with Next.js, Tailwind CSS, and ❤️ by Vineet Pandey
