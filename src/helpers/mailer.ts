@@ -25,12 +25,11 @@ export const sendEmail = async ({email, emailType, userId='Nothing'}: any) => {
         console.log("Hashed token:", hashedToken)
         // Looking to send emails in production? Check out our Email API/SMTP product!
         var transport = nodemailer.createTransport({
-        host: "sandbox.smtp.mailtrap.io",
-        port: 2525,
-        auth: {
-            user: "4bb111cbd270fe",
-            pass: "390c5901de0e55"
-        }
+            service: "gmail",
+            auth: {
+                user: "vineetpandey0010@gmail.com", // your Gmail
+                pass: process.env.GMAIL_APP_PASSWORD, // your 16-character app password
+            },
         });
 
         const mailOptions = {

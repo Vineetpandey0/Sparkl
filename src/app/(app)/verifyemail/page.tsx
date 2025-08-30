@@ -2,17 +2,20 @@
 
 import axios from "axios"
 import Link from "next/link"
+import { useRouter } from "next/navigation"
 import { use, useEffect, useState } from "react"
 
 export default function VerifyEmailPage() {
     const [token, setToken] = useState("")
     const [verified, setVerified] = useState(false)
     const [error, setError] = useState(false)
+    const router = useRouter()
 
     const verifyUserEmail = async () => {
         try {
             await axios.post('/api/users/verifyemail', {token})
             setVerified(true)
+            router.push('/profile')
             console.log("Verification successful")
         } catch (error: any) {
             setError(true)

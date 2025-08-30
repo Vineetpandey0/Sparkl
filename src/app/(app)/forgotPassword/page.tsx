@@ -34,11 +34,9 @@ function forgotPassword() {
     const sendVerificationMail = async () => {
         try {
             setLoading(true)
-            console.log(email)
             const response = await axios.post('/api/users/forgotPassword', { email })
             setLoading(false)
             toast.success("Check your email for the reset link")
-            console.log("Verification email sent:", response)
         } catch (error) {
             console.error("Error sending forgot password email:", error)
         } finally {
@@ -49,7 +47,7 @@ function forgotPassword() {
         <div className='h-screen bg-black overflow-hidden font-helvetica'>
             <div className='flex flex-col items-center p-4 pr-8 pl-8 bg-black text-white '>
                 <div className='flex w-full'>
-                    <div className='text-5xl text-center --font-edu w-1/2 flex items-start '>Ripple</div>
+                    <div className='text-5xl text-center --font-edu w-1/2 flex items-start '>Sparkl</div>
                     <div className='w-1/2 flex items-center justify-end gap-6  '>
                         <div className="flex gap-6 ">
                             <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer">

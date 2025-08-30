@@ -61,11 +61,11 @@ function resetPassword() {
     } catch (error: any) {
       console.error("Error resetting password:", error.message)
       toast.error("Failed to reset password....")
-    } finally{
-        setLoading(false)
-        setNewPassword("")
-        setToken("")
-        setVerified(false)
+    } finally {
+      setLoading(false)
+      setNewPassword("")
+      setToken("")
+      setVerified(false)
     }
   }
 
@@ -91,12 +91,12 @@ function resetPassword() {
 
     <div className='flex w-full h-lvh items-center flex-col bg-black'>
       <div className='flex w-3/4 m-10 h-full justify-evenly items-center overflow-hidden object-contain'>
-        
+
 
         <Card className="w-1/2 h-full max-w-sm flex justify-center shadow-xl text-white border-none">
 
           <CardHeader>
-            <h1 className='text-8xl text-center --font-edu '>Ripple</h1>
+            <h1 className='text-8xl text-center --font-edu '>Sparkl</h1>
 
           </CardHeader>
 

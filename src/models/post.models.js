@@ -23,4 +23,5 @@ const postSchema = new Schema({
     }
 }, {timestamps: true})
 
-export const Post = mongoose.model("Post", postSchema)
+const PostFile = mongoose.models.PostFile || mongoose.model("PostFile", postSchema)
+export default PostFile

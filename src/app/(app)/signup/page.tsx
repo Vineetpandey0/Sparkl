@@ -1,10 +1,11 @@
 "use client"
-import React, { useEffect, useState } from 'react'
-import Link from 'next/link'
-import { useRouter } from 'next/navigation'
-import axios from 'axios'
-import toast from 'react-hot-toast'
+import Link from "next/link"
+import axios from "axios"
+import React, { useState, useEffect } from "react"
+import toast from "react-hot-toast"
+import { useRouter } from "next/navigation"
 import { Github, Instagram, Linkedin } from 'lucide-react'
+
 
 import { Button } from "@/components/ui/button"
 import {
@@ -18,35 +19,43 @@ import {
 } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
+import Navbar from "../../components/navbar"
+import Footer from "@/app/components/footer"
+import ThemeModeToggle from "@/app/components/ThemeModeToggle"
 
 
-export default function LoginPage() {
+export default function SignUpPage() {
     const router = useRouter()
     const [user, setUser] = useState({
         email: "",
         password: "",
+        username: "",
+        fullname: "",
+        avatar: "",
     })
-
     const [buttonDisabled, setButtonDisabled] = useState(false)
     const [loading, setLoading] = useState(false)
 
-    const onLogin = async () => {
+    const onSignup = async () => {
         try {
             setLoading(true)
-            const response = await axios.post("/api/users/login", user)
-            console.log("Login success", response.data)
-            toast.success("Login success...")
-            router.push("/profile")
+            const response = await axios.post("/api/users/signup", user)
+            toast.success("Check your email for verification link...", { duration: 5000 })
+            router.push("/login")
         } catch (error: any) {
-            console.log("Login failed", error.message)
-            toast.error(error.message)
+            console.log("Signup failed", error.message)
+            if (error.status === 400) {
+                toast.error("User already exists")
+            } else {
+                toast.error("Signup failed, please try again")
+            }
         } finally {
             setLoading(false)
         }
     }
 
     useEffect(() => {
-        if (user.email.length > 0 && user.password.length > 0) {
+        if (user.email.length > 0 && user.password.length > 0 && user.username.length > 0 && user.fullname.length > 0) {
             setButtonDisabled(false)
         } else {
             setButtonDisabled(true)
@@ -54,9 +63,14 @@ export default function LoginPage() {
     }, [user])
 
     return (
-        <div className='flex w-full h-lvh items-center flex-col bg-black'>
-            <div className='flex w-3/4 m-10 h-full justify-evenly items-center overflow-hidden object-contain'>
-                <div className="card_img group relative w-2/5 h-4/5">
+        <div className='flex w-full mt-2 items-center flex-col '>
+            <div className="absolute right-8 top-5">
+                <ThemeModeToggle />
+            </div>
+            <div className='flex w-3/4 m-10 gap-8 h-full justify-evenly items-center object-contain'>
+
+
+                <div className="card_img group relative w-2/7 ">
 
                     {/* Back card 1 */}
                     <div className="absolute inset-0 rounded-3xl overflow-hidden transform rotate-6 translate-x-3 translate-y-3 transition duration-500 group-hover:rotate-2 group-hover:translate-x-1 group-hover:translate-y-1">
@@ -86,16 +100,38 @@ export default function LoginPage() {
                     </div>
                 </div>
 
-                <Card className="w-1/2 h-full max-w-sm flex justify-center shadow-xl text-white border-none">
+                <Card className="w-2/5 h-full  flex justify-center  border-none">
 
                     <CardHeader>
-                        <h1 className='text-8xl text-center --font-edu '>Ripple</h1>
+                        <h1 className='text-8xl text-center --font-edu font-bold'>Sparkl</h1>
 
                     </CardHeader>
 
                     <CardContent>
                         <div>
                             <div className="flex flex-col gap-6">
+                                <div className="grid gap-2">
+                                    <Label htmlFor="fullname">Full Name</Label>
+                                    <Input
+                                        className='border-gray-400 focus-visible:ring-0'
+                                        id="fullname"
+                                        type="text"
+                                        placeholder="Enter your name"
+                                        required
+                                        onChange={(e) => setUser({ ...user, fullname: e.target.value })}
+                                    />
+                                </div>
+                                <div className="grid gap-2">
+                                    <Label htmlFor="username">Username</Label>
+                                    <Input
+                                        className='border-gray-400 focus-visible:ring-0'
+                                        id="username"
+                                        type="text"
+                                        placeholder="Username"
+                                        required
+                                        onChange={(e) => setUser({ ...user, username: e.target.value })}
+                                    />
+                                </div>
                                 <div className="grid gap-2">
                                     <Label htmlFor="email">Email</Label>
                                     <Input
@@ -110,22 +146,20 @@ export default function LoginPage() {
                                 <div className="grid gap-2">
                                     <div className="flex items-center">
                                         <Label htmlFor="password">Password</Label>
-                                        <Link
-                                            href="/forgotPassword"
-                                            className="ml-auto inline-block text-sm underline-offset-4 hover:underline"
-                                        >
-                                            Forgot your password?
-                                        </Link>
+
                                     </div>
                                     <Input
                                         className='border-gray-400 focus-visible:ring-0'
-                                        placeholder='********'
+                                        placeholder='Use a strong password'
                                         id="password"
                                         type="password"
                                         required
                                         onChange={(e) => setUser({ ...user, password: e.target.value })}
                                     />
                                 </div>
+
+
+
                             </div>
                         </div>
                     </CardContent>
@@ -133,36 +167,34 @@ export default function LoginPage() {
                     <CardFooter className="flex-col gap-2">
                         <Button
                             type="submit"
-                            className="w-full text-md cursor-pointer bg-purple-700"
-                            onClick={onLogin}
+                            className="w-full text-md cursor-pointer bg-purple-700 "
+                            onClick={onSignup}
                             disabled={buttonDisabled || loading}
                         >
-                            {loading ? "Logging in..." : "Login"}
+                            {loading ? "Signing up..." : "Sign Up"}
                         </Button>
                     </CardFooter>
 
-                    <div className='flex justify-center items-center'>Don't have an account?
-                        <Link href="/signup">
-                            <Button variant="link" className='cursor-pointer text-purple-400 pl-2'>Sign Up</Button>
+                    <div className='flex justify-center items-center'>Already have an account?
+                        <Link href="/login">
+                            <Button variant="link" className='cursor-pointer text-purple-400 pl-2'>Login</Button>
                         </Link>
                     </div>
                     <div className="flex gap-6 justify-center ">
                         <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer">
-                            <Github className="w-5 h-5 text-white hover:text-gray-400" />
+                            <Github className="w-5 h-5 hover:opacity-60" />
                         </a>
                         <a href="https://linkedin.com/in/yourusername" target="_blank" rel="noopener noreferrer">
-                            <Linkedin className="w-5 h-5 text-white hover:text-gray-400" />
+                            <Linkedin className="w-5 h-5 hover:opacity-60" />
                         </a>
                         <a href="https://instagram.com/vineetpandey00" target="_blank" rel="noopener noreferrer">
-                            <Instagram className="w-5 h-5 text-white hover:text-gray-400" />
+                            <Instagram className="w-5 h-5 hover:opacity-60" />
                         </a>
                     </div>
 
                 </Card>
             </div>
-
-            
+            <Footer />
         </div>
     )
-
 }

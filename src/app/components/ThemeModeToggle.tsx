@@ -3,39 +3,38 @@
 import * as React from "react"
 import { Moon, Sun } from "lucide-react"
 import { useTheme } from "next-themes"
-
-import { Button } from "@/components/ui/button"
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
-
+import { Toggle } from "@/components/ui/toggle"
+import { useEffect, useState } from "react"
 
 function ThemeModeToggle() {
-    const { setTheme } = useTheme()
+  const { theme, setTheme, resolvedTheme } = useTheme()
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+
+  const isDark = resolvedTheme === "dark"
+
+  const handleToggle = () => {
+    setTheme(isDark ? "light" : "dark")
+  }
+
+  if (!mounted) return null // Prevent mismatch during hydration
+
   return (
-    <DropdownMenu>
-      <DropdownMenuTrigger asChild>
-        <Button variant="outline" size="icon">
-          <Sun className="h-[1.2rem] w-[1.2rem] scale-100 rotate-0 transition-all dark:scale-0 dark:-rotate-90" />
-          <Moon className="absolute h-[1.2rem] w-[1.2rem] scale-0 rotate-90 transition-all dark:scale-100 dark:rotate-0" />
-          <span className="sr-only">Toggle theme</span>
-        </Button>
-      </DropdownMenuTrigger>
-      <DropdownMenuContent align="end">
-        <DropdownMenuItem onClick={() => setTheme("light")}>
-          Light
-        </DropdownMenuItem>
-        <DropdownMenuItem onClick={() => setTheme("dark")}>
-          Dark
-        </DropdownMenuItem>
-        <DropdownMenuItem onClick={() => setTheme("system")}>
-          System
-        </DropdownMenuItem>
-      </DropdownMenuContent>
-    </DropdownMenu>
+    <Toggle
+      pressed
+      onPressedChange={handleToggle}
+      aria-label="Toggle theme"
+      className="size-9 flex items-center justify-center rounded-full border-none border-input bg-background hover:bg-accent hover:text-accent-foreground cursor-pointer hover:opacity-50"
+    >
+      {isDark ? (
+        <Moon className="size-9  transition-transform duration-300 rotate-0 scale-100" />
+      ) : (
+        <Sun className="size-9 transition-transform duration-300 rotate-0 scale-100" />
+      )}
+    </Toggle>
   )
 }
 

@@ -1,13 +1,14 @@
-import { NextRequest } from "next/server";
+import { NextRequest, NextResponse } from "next/server"
 import jwt from 'jsonwebtoken'
 
-export const getDataFromToken = (request: NextRequest) => {
+export async function GET(request: NextRequest) {
     try {
         const token = request.cookies.get("token")?.value || ''
         if(!token) throw new Error("User not logged in, NO TOKEN FOUND")
         const decodedToken:any = jwt.verify(token, process.env.TOKEN_SECRET)
-        return decodedToken.id
+        return NextResponse.json({data: decodedToken}, {status: 200})
     } catch (error:any) {
-        throw new Error(error.message)
+        return NextResponse.json({error:error.message}, {status: 400})
+
     }
 }

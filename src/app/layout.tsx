@@ -33,18 +33,18 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
 
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${edu.variable} antialiased`}
       >
+      <ThemeProvider
+        attribute="class"
+        defaultTheme="dark"
+        enableSystem={false}
+        disableTransitionOnChange
+      >
         <SessionWrapper>
-          <ThemeProvider
-            attribute="class"
-            defaultTheme="system"
-            enableSystem
-            disableTransitionOnChange
-          >
             {children}
             <Toaster
               toastOptions={{
@@ -54,9 +54,9 @@ export default function RootLayout({
                 },
               }}
             />
-          </ThemeProvider>
         </SessionWrapper>
       
+        </ThemeProvider>
       </body>
     </html>
   );

@@ -5,18 +5,31 @@
   font-family: var(--font-edu), cursive;
 }
 
-@theme inline {
-  --animate-aurora: aurora 60s linear infinite;
-  @keyframes aurora {
-    from {
-      background-position:
-        50% 50%,
-        50% 50%;
-    }
-    to {
-      background-position:
-        350% 50%,
-        350% 50%;
-    }
-  }
+
+
+/* 🔹 Hide scrollbar but allow scrolling */
+.no-scrollbar::-webkit-scrollbar {
+  display: none; /* Chrome, Safari */
 }
+.no-scrollbar {
+  -ms-overflow-style: none;  /* IE/Edge */
+  scrollbar-width: none;     /* Firefox */
+}
+
+html, body {
+  overflow-y: auto;
+}
+
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  display: none;
+}
+
+html, body {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.border-white { border-color: #fff; }
+.dark .dark\:border-black { border-color: #000; }
+

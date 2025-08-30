@@ -18,6 +18,7 @@ export async function POST(request: NextRequest) {
         if(!user) {
             return NextResponse.json({error: "User does not exist"}, {status: 400})
         }
+        if(user.isVerified === false) return NextResponse.json({error: "User isnt verified"}, {status: 411})
 
         //check if password is correct
         const isPasswordValid = await bcrypt.compare(password, user.password)
@@ -29,7 +30,8 @@ export async function POST(request: NextRequest) {
         const tokenData = {
             id: user._id,
             username: user.username,
-            email: user.email
+            email: user.email,
+            avatar: user.avatar,
         }
         //create token
         const token = await jwt.sign(tokenData, process.env.TOKEN_SECRET, {expiresIn: "1d"})
