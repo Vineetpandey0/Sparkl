@@ -36,6 +36,7 @@ export default function LoginPage() {
             const response = await axios.post("/api/users/login", user)
             toast.success("Login success...")
             router.push("/profile")
+            window.location.reload()
         } catch (error: any) {
             if (!error.response) {
                 toast.error("Network error. Try again!");

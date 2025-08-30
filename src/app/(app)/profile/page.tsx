@@ -169,7 +169,7 @@ export default function Profile() {
 
                                 }
                                 {!isUploadingAvatar &&
-                                    <div className="avatar-circle border-red-500 border-2 size-36 rounded-full overflow-hidden flex items-center justify-center group relative">
+                                    <div className="avatar-circle size-36 rounded-full overflow-hidden flex items-center justify-center group relative">
                                         <Image 
                                             alt="User Profile pic"
                                             src={user?.avatar} className="object-cover group-hover:opacity-40" fill/>
