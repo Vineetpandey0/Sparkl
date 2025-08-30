@@ -157,7 +157,7 @@ export default function LoginPage() {
                         </Button>
                     </CardFooter>
 
-                    <div className='flex justify-center items-center'>Don't have an account?
+                    <div className='flex justify-center items-center'>Don&apos;t have an account?
                         <Link href="/signup">
                             <Button variant="link" className='cursor-pointer text-purple-400 pl-2'>Sign Up</Button>
                         </Link>
