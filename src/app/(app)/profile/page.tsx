@@ -127,7 +127,7 @@ export default function Profile() {
         <div className="flex flex-col min-h-screen w-full ">
             {/* Navbar */}
             <div className="flex items-center justify-between px-6 py-4 pb-6">
-                <div className="text-5xl w-1/2 flex items-start font-bold --font-edu">Sparkl</div>
+                <Link href='/' className="text-5xl w-1/2 flex items-start font-bold --font-edu">Sparkl</Link>
                 <div className="w-1/2 flex items-center justify-end gap-6">
                     <div className="flex gap-6 justify-center items-center">
                         <Link href='/' title="Home">
@@ -143,7 +143,7 @@ export default function Profile() {
                         {!loadingUserDetails && 
                             <Image alt="avatarlogo" 
                                 src={user?.avatar} 
-                                className="object-fill  hover:opacity-65" 
+                                className="object-cover  hover:opacity-65" 
                                 fill/>}
                         {loadingUserDetails && <Loader className="animate-spin w-6 h-6 text-gray-500" />
                         }
