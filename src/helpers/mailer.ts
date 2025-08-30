@@ -24,7 +24,7 @@ export const sendEmail = async ({email, emailType, userId='Nothing'}: unknown) =
         }
         console.log("Hashed token:", hashedToken)
         // Looking to send emails in production? Check out our Email API/SMTP product!
-        let transport = nodemailer.createTransport({
+        const transport = nodemailer.createTransport({
             service: "gmail",
             auth: {
                 user: "vineetpandey0010@gmail.com", // your Gmail
