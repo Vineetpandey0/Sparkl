@@ -115,7 +115,7 @@ function Profile() {
 
             <div className=" flex p-6 w-full gap-6">
                 {
-                    <div className={`profile-card post-card flex flex-col gap-6 ${postClicked ? "w-2/3" : "w-1/3"} `}>
+                    <div className={`profile-card post-card flex flex-col gap-6 ${postClicked ? "w-2/3" : "w-3/6"} `}>
                         {postClicked &&
                             <PostView postid={postid} username={user!.username} avatarUrl={user?.avatar} isAdmin={false} />}
 
