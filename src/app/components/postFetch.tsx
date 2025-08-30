@@ -113,7 +113,7 @@ function PostFetch() {
                   </div>
 
                   {/* Post image */}
-                  <div className="relative">
+                  <div className="relative flex items-center justify-center">
                   <Image
                     src={post.postFile}
                     alt={`post-${index}`}

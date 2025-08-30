@@ -117,7 +117,7 @@ function PostView({ postid, username, avatarUrl, isAdmin }: unknown) {
                         </div>
 
                         {/* image */}
-                        <div className="w-full relative bg-black">
+                        <div className="w-full relative flex items-center justify-center bg-black">
                             <Image
                                 src={postUrl}
                                 alt="post"
