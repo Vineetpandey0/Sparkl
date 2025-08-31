@@ -114,7 +114,7 @@ function Upload() {
           </div>
           <Link href="/profile" className="size-12 relative rounded-full overflow-hidden text-xl cursor-pointer ">
             <Image alt='avatar' src={currentUser.avatar} 
-            className="object-fill hover:opacity-65" 
+            className="object-cover hover:opacity-65" 
             fill
             />
           </Link>

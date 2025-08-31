@@ -38,9 +38,12 @@ function Profile() {
     const username = params.username
 
     useEffect(() => {
+        setCurrentUser({})
+        console.log("the code is trigerring......")
         const currentUsername = async () => {
             const response = await axios.get('/api/getUsername')
             setCurrentUser(response.data.data)
+            console.log(currentUser)
             if (username === response.data.data.username) router.replace(`/profile`)
         }
         currentUsername()
@@ -105,7 +108,7 @@ function Profile() {
                     </div>
                     {!loadingUserDetails && 
                     <Link href="/profile" className="relative size-12 rounded-full overflow-hidden text-xl cursor-pointer ">
-                        <Image alt="user logo" src={currentUser.avatar} className="object-fill hover:opacity-65" fill />
+                        <Image alt="user logo" src={currentUser.avatar} className="object-cover hover:opacity-65" fill  priority/>
                     </Link>}
                     {loadingUserDetails && <Loader className="animate-spin w-6 h-6 text-gray-500" />}
                 </div>

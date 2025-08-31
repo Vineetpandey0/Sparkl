@@ -33,3 +33,5 @@ html, body {
 .border-white { border-color: #fff; }
 .dark .dark\:border-black { border-color: #000; }
 
+.border-no {border-width: 0;}
+.dark .dark\:border-1 {border-width: 1px; border-color: #2e2d2d}

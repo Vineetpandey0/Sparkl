@@ -92,7 +92,7 @@ function PostFetch() {
               {chunkPosts.map((post: unknown, index: number) => (
                 <div
                   key={`${chunkIndex}-${index}`}
-                  className="inline-block w-full rounded-xl overflow-hidden shadow-xl mb-6 break-inside-avoid"
+                  className="inline-block w-full rounded-xl border-neutral-800 border-no dark:border-1 overflow-hidden shadow-xl mb-6 break-inside-avoid"
                 >
                   {/* Header */}
                   <div className="relative flex items-center border-none gap-3 p-3">
