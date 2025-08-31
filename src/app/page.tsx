@@ -64,7 +64,7 @@ function Page() {
 
       {/* Galleries */}
       <div className="flex-1 no-scrollbar">
-        <PostFetch />   {/*  posts should have their own loader inside PostFetch */}
+        <PostFetch /> 
       </div>
 
       <Footer />

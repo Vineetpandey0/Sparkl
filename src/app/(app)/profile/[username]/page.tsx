@@ -120,7 +120,7 @@ function Profile() {
                 {
                     <div className={`profile-card post-card flex flex-col gap-6 ${postClicked ? "w-2/3" : "w-3/6"} `}>
                         {postClicked &&
-                            <PostView postid={postid} username={user!.username} avatarUrl={user?.avatar} isAdmin={false} />}
+                            <PostView postid={postid} username={user!.username} avatarUrl={user?.avatar} isAdmin={false} userid={user?._id} />}
 
                         <h1 className="text-3xl pl-6 font-bold">Profile</h1>
 
@@ -164,10 +164,10 @@ function Profile() {
                                         className="h-full object-cover hover:opacity-80  hover:scale-105 transition-transform duration-300"
                                         fill
                                     />
-                                    <div className='text-white text-2xl absolute bottom-0 left-0 p-3 flex justify-center items-center gap-1'>
+                                    {!postClicked && <div className='text-white text-2xl absolute bottom-0 left-0 p-3 flex justify-center items-center gap-1'>
                                         <Heart className="w-6 h-6 fill-red-500 text-red-500" />
                                         <p >{post.views}</p>
-                                    </div>
+                                    </div>}
 
                                 </div>
                             ))}

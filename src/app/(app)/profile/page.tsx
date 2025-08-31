@@ -155,9 +155,9 @@ export default function Profile() {
 
             <div className=" flex p-6 w-full gap-6">
                 {
-                    <div className={`profile-card post-card flex flex-col w-3/6 gap-6 ${postClicked ? "w-2/3" : "w-3/6"} `}>
+                    <div className={`profile-card post-card flex flex-col gap-6 ${postClicked ? "w-2/3" : "w-3/6"} `}>
                         {postClicked &&
-                            <PostView postid={postid} username={user!.username} avatarUrl={user?.avatar} isAdmin={true} />}
+                            <PostView postid={postid} username={user!.username} avatarUrl={user?.avatar} isAdmin={true} userid={user._id} />}
 
                         <h1 className="text-3xl pl-6 font-bold">My Profile</h1>
 
@@ -224,10 +224,10 @@ export default function Profile() {
                                         className="h-full object-cover hover:opacity-80  hover:scale-105 transition-transform duration-300"
                                         fill
                                     />
-                                    <div className='text-white text-2xl absolute bottom-0 left-0 p-3 flex justify-center items-center gap-1'>
+                                    {!postClicked && <div className='text-white text-2xl absolute bottom-0 left-0 p-3 flex justify-center items-center gap-1'>
                                         <Heart className="w-6 h-6 fill-red-500 text-red-500" />
                                         <p >{post.views}</p>
-                                    </div>
+                                    </div>}
 
                                 </div>
                             ))}

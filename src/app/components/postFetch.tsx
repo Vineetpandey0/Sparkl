@@ -3,7 +3,7 @@ import React, { useEffect, useState, useRef } from "react"
 import axios from "axios"
 import { formatDistanceToNow, parseISO } from "date-fns"
 import Link from "next/link"
-import { Loader } from "lucide-react"
+import { Heart, Loader } from "lucide-react"
 import Image from "next/image"
 
 function PostFetch() {
@@ -127,10 +127,12 @@ function PostFetch() {
 
                   {/* Caption */}
                   {post.caption && (
-                    <div className="p-3 pb-0 text-sm">
-                      <span className="font-semibold">@{post.username}</span>{" "}
-                      {post.caption}
-                    </div>
+                    
+                      <div className="p-3 pb-0 text-md  ">
+                        <span className="font-semibold">@{post.username}</span>{" "}
+                        {post.caption}
+                      </div>
+                      
                   )}
 
                   <p className="mt-2 pl-3 pb-2 text-[11px] uppercase tracking-wide text-muted-foreground">

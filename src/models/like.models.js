@@ -5,10 +5,12 @@ const likeSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: "Post"
     },
-    likedBy: {
-        type: Schema.Types.ObjectId,
-        ref: "User"
-    }
+    likedBy: [{
+        user: { type: Schema.Types.ObjectId, ref: "User" },
+        liked: { type: Boolean, default: true }
+    }]
+
 }, {timestamps: true})
 
-export const Like = mongoose.model("Like", likeSchema)
+const Like = mongoose.models.Like  || mongoose.model("Like", likeSchema)
+export default Like
