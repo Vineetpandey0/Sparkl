@@ -74,7 +74,7 @@ export async function GET(request:NextRequest) {
             likeList = await newLikeModel.save()
         }
 
-        const userObj = likeList.likedBy.find(obj => obj.user === userid);
+        const userObj = likeList.likedBy.find(obj => obj.user.toString() === userid);
         const isLiked = userObj.liked || false
         return NextResponse.json({data:isLiked}, {status:200})
     } catch (error:any) {
