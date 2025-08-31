@@ -6,6 +6,18 @@ import { Skeleton } from '@/components/ui/skeleton';
 import { formatDistanceToNow, parseISO } from 'date-fns'
 import toast from 'react-hot-toast';
 import Image from 'next/image';
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@/components/ui/alert-dialog"
+
 
 function PostView({ postid, username, avatarUrl, isAdmin, userid }: any) {
   const [liked, setLiked] = useState(false);
@@ -92,7 +104,30 @@ function PostView({ postid, username, avatarUrl, isAdmin, userid }: any) {
                 />
                 <span className="text-sm absolute left-12 font-semibold">{username}</span>
             </div>
-            {isAdmin && <button className='text-red-600 cursor-pointer'>Delete</button>}
+            {isAdmin &&
+                <AlertDialog >
+                    <AlertDialogTrigger className='text-red-600 cursor-pointer'>Delete</AlertDialogTrigger>
+                    <AlertDialogContent className='bg-white'>
+                        <AlertDialogHeader>
+                            <AlertDialogTitle>Are you sure?</AlertDialogTitle>
+                            <AlertDialogDescription>
+                                This action cannot be undone. This will permanently delete your post
+                                and this post cannot be recovered once deleted.
+                            </AlertDialogDescription>
+                        </AlertDialogHeader>
+                        <AlertDialogFooter>
+                            <AlertDialogCancel className='cursor-pointer'>Cancel</AlertDialogCancel>
+                            <AlertDialogAction
+                                onClick={deletePost}
+                                className='cursor-pointer text-red-600'
+                            >
+                                Delete
+                            </AlertDialogAction>
+                        </AlertDialogFooter>
+                    </AlertDialogContent>
+                </AlertDialog>
+            }
+
           </div>
 
           <div className="w-full relative flex items-center justify-center bg-black">
