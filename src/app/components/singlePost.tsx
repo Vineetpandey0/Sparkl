@@ -117,7 +117,7 @@ function PostView({ postid, username, avatarUrl, isAdmin, userid }: any) {
             {isAdmin &&
                 <AlertDialog  >
                     <AlertDialogTrigger className='text-red-600 cursor-pointer'>Delete</AlertDialogTrigger>
-                    <AlertDialogContent className='text-black'>
+                    <AlertDialogContent className='text-black bg-white'>
                         <AlertDialogHeader>
                             <AlertDialogTitle>Are you sure?</AlertDialogTitle>
                             <AlertDialogDescription>
