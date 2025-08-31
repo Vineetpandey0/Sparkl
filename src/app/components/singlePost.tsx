@@ -60,12 +60,12 @@ function PostView({ postid, username, avatarUrl, isAdmin, userid }: any) {
     
     const deletePost = async () => {
     try {
-      await axios.delete(`/api/users/deletePost`)
-      toast.success("Post deleted successfully!") // optional
-      router.push("/") // redirect after delete
+      await axios.delete(`/api/users/deletePost`, {data: {postid}})
+      toast.success("Post deleted successfully!") 
+      window.location.reload()
     } catch (error: any) {
       console.error(error)
-      toast.error("Failed to delete post") // optional
+      toast.error("Failed to delete post") 
     }
   }
 
@@ -115,9 +115,9 @@ function PostView({ postid, username, avatarUrl, isAdmin, userid }: any) {
                 <span className="text-sm absolute left-12 font-semibold">{username}</span>
             </div>
             {isAdmin &&
-                <AlertDialog >
+                <AlertDialog  >
                     <AlertDialogTrigger className='text-red-600 cursor-pointer'>Delete</AlertDialogTrigger>
-                    <AlertDialogContent className='bg-white'>
+                    <AlertDialogContent className='text-black'>
                         <AlertDialogHeader>
                             <AlertDialogTitle>Are you sure?</AlertDialogTitle>
                             <AlertDialogDescription>
