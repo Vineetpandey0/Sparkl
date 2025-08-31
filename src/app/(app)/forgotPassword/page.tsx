@@ -31,7 +31,7 @@ function ForgotPassword() {
     const sendVerificationMail = async () => {
         try {
             setLoading(true)
-            const response = await axios.post('/api/users/ForgotPassword', { email })
+            const response = await axios.post('/api/users/forgotPassword', { email })
             setLoading(false)
             toast.success("Check your email for the reset link")
         } catch (error) {
