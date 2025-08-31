@@ -17,6 +17,7 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog"
+import { useRouter } from 'next/navigation';
 
 
 function PostView({ postid, username, avatarUrl, isAdmin, userid }: any) {
@@ -26,6 +27,7 @@ function PostView({ postid, username, avatarUrl, isAdmin, userid }: any) {
   const [caption, setCaption] = useState('');
   const [like, setLike] = useState(0);
   const [loading, setLoading] = useState(false);
+  const router = useRouter()
 
   const fetchPostUrl = async () => {
     try {
@@ -56,8 +58,16 @@ function PostView({ postid, username, avatarUrl, isAdmin, userid }: any) {
   }
 };
     
-
-
+    const deletePost = async () => {
+    try {
+      await axios.delete(`/api/users/deletePost`)
+      toast.success("Post deleted successfully!") // optional
+      router.push("/") // redirect after delete
+    } catch (error: any) {
+      console.error(error)
+      toast.error("Failed to delete post") // optional
+    }
+  }
 
   const toggleLike = async () => {
     const newLiked = !liked;
