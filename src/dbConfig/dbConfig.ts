@@ -8,13 +8,15 @@ export async function connect() {
         connection.on('connected', () => {
             console.log('MongoDB connected successfully')
         })
+
         connection.on('error', (err) => {
-            console.log('Error while connecting MongoDB....' + err)
+            
+            console.log('Error while connecting MongoDB.....' + err)
             process.exit()
         })
 
     } catch (error) {
-        console.log('Something went wrong while connecting with mongodb....' )
+        console.log('Something went wrong while connecting with mongodb server....' )
         console.log(error)
     }
 }
